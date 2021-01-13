@@ -43,11 +43,18 @@ namespace HToolOne
             this.cbIface = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ddos_btnCheckAddr = new System.Windows.Forms.Button();
+            this.ddos_rtbMain = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.ddos_tbAddr = new System.Windows.Forms.TextBox();
+            this.ddos_btnStartAttack = new System.Windows.Forms.Button();
+            this.ddos_btnStopAttack = new System.Windows.Forms.Button();
+            this.ddos_btnClearAttackLog = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -64,7 +71,7 @@ namespace HToolOne
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1364, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1705, 38);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,7 +80,7 @@ namespace HToolOne
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(60, 34);
             this.менюToolStripMenuItem.Text = "Menu";
             // 
             // exitToolStripMenuItem
@@ -87,7 +94,7 @@ namespace HToolOne
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 34);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -157,6 +164,12 @@ namespace HToolOne
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ddos_btnClearAttackLog);
+            this.tabPage1.Controls.Add(this.ddos_btnStopAttack);
+            this.tabPage1.Controls.Add(this.ddos_btnStartAttack);
+            this.tabPage1.Controls.Add(this.ddos_tbAddr);
+            this.tabPage1.Controls.Add(this.ddos_btnCheckAddr);
+            this.tabPage1.Controls.Add(this.ddos_rtbMain);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -164,6 +177,27 @@ namespace HToolOne
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DDoS Attack";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ddos_btnCheckAddr
+            // 
+            this.ddos_btnCheckAddr.Location = new System.Drawing.Point(15, 92);
+            this.ddos_btnCheckAddr.Name = "ddos_btnCheckAddr";
+            this.ddos_btnCheckAddr.Size = new System.Drawing.Size(482, 79);
+            this.ddos_btnCheckAddr.TabIndex = 1;
+            this.ddos_btnCheckAddr.Text = "Check address";
+            this.ddos_btnCheckAddr.UseVisualStyleBackColor = true;
+            this.ddos_btnCheckAddr.Click += new System.EventHandler(this.ddos_btnCheckAddr_Click);
+            // 
+            // ddos_rtbMain
+            // 
+            this.ddos_rtbMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ddos_rtbMain.Location = new System.Drawing.Point(508, 20);
+            this.ddos_rtbMain.Name = "ddos_rtbMain";
+            this.ddos_rtbMain.ReadOnly = true;
+            this.ddos_rtbMain.Size = new System.Drawing.Size(826, 586);
+            this.ddos_rtbMain.TabIndex = 0;
+            this.ddos_rtbMain.Text = "";
+            this.ddos_rtbMain.TextChanged += new System.EventHandler(this.ddos_rtbMain_TextChanged);
             // 
             // tabPage2
             // 
@@ -193,6 +227,49 @@ namespace HToolOne
             this.tabPage4.Text = "OVPN Helper";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // ddos_tbAddr
+            // 
+            this.ddos_tbAddr.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ddos_tbAddr.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.ddos_tbAddr.Location = new System.Drawing.Point(17, 22);
+            this.ddos_tbAddr.Name = "ddos_tbAddr";
+            this.ddos_tbAddr.ShortcutsEnabled = false;
+            this.ddos_tbAddr.Size = new System.Drawing.Size(480, 53);
+            this.ddos_tbAddr.TabIndex = 2;
+            this.ddos_tbAddr.Text = "2.59.40.12";
+            this.ddos_tbAddr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ddos_btnStartAttack
+            // 
+            this.ddos_btnStartAttack.Enabled = false;
+            this.ddos_btnStartAttack.Location = new System.Drawing.Point(15, 185);
+            this.ddos_btnStartAttack.Name = "ddos_btnStartAttack";
+            this.ddos_btnStartAttack.Size = new System.Drawing.Size(482, 79);
+            this.ddos_btnStartAttack.TabIndex = 3;
+            this.ddos_btnStartAttack.Text = "Start attack";
+            this.ddos_btnStartAttack.UseVisualStyleBackColor = true;
+            this.ddos_btnStartAttack.Click += new System.EventHandler(this.ddos_btnStartAttack_Click);
+            // 
+            // ddos_btnStopAttack
+            // 
+            this.ddos_btnStopAttack.Location = new System.Drawing.Point(15, 278);
+            this.ddos_btnStopAttack.Name = "ddos_btnStopAttack";
+            this.ddos_btnStopAttack.Size = new System.Drawing.Size(482, 79);
+            this.ddos_btnStopAttack.TabIndex = 4;
+            this.ddos_btnStopAttack.Text = "Stop attack";
+            this.ddos_btnStopAttack.UseVisualStyleBackColor = true;
+            this.ddos_btnStopAttack.Click += new System.EventHandler(this.ddos_btnStopAttack_Click);
+            // 
+            // ddos_btnClearAttackLog
+            // 
+            this.ddos_btnClearAttackLog.Location = new System.Drawing.Point(16, 523);
+            this.ddos_btnClearAttackLog.Name = "ddos_btnClearAttackLog";
+            this.ddos_btnClearAttackLog.Size = new System.Drawing.Size(482, 79);
+            this.ddos_btnClearAttackLog.TabIndex = 5;
+            this.ddos_btnClearAttackLog.Text = "Clear Attack Log";
+            this.ddos_btnClearAttackLog.UseVisualStyleBackColor = true;
+            this.ddos_btnClearAttackLog.Click += new System.EventHandler(this.ddos_btnClearAttackLog_Click);
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,6 +294,8 @@ namespace HToolOne
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,6 +318,12 @@ namespace HToolOne
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        internal System.Windows.Forms.RichTextBox ddos_rtbMain;
+        private System.Windows.Forms.Button ddos_btnCheckAddr;
+        private System.Windows.Forms.TextBox ddos_tbAddr;
+        private System.Windows.Forms.Button ddos_btnStopAttack;
+        private System.Windows.Forms.Button ddos_btnStartAttack;
+        private System.Windows.Forms.Button ddos_btnClearAttackLog;
     }
 }
 
